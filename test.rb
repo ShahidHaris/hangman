@@ -76,12 +76,15 @@ class Hangman
     @incorrect_guesses = map['incorrect_guesses']
   end
 
-  def play_again
+  def game_stats
     puts "Current state: #{@array}"
-    @attempts_left -= 1
     puts "Attempts left: #{@attempts_left}"
-    puts "Incorrect guesses so far: #{@incorrect_guesses.join(', ')}"
+    puts "Incorrect guesses so far: #{@incorrect_guesses}"
+  end
 
+  def play_again
+    @attempts_left -= 1
+    @incorrect_guesses.join(', ')
     @array.include?('_') ? play : game_state
   end
 
@@ -113,6 +116,7 @@ class Hangman
   end
 
   def play
+    game_stats
     puts "Type 'save' to save the game and exit, or press enter to continue"
 
     input = gets.chomp.downcase
@@ -132,3 +136,4 @@ hangman.play
 
 # I have fixed the Unexpected Prompt After Winning the Game
 # Now remain: Persistent Prompt When Loading Saved Games
+# Also some code review recommendations
