@@ -100,7 +100,7 @@ class Hangman
   end
 
   def delete_saved_game
-    File.delete('save_game.yaml') if File.exist?('save_game.yaml')
+    File.delete('save_game.yaml') if File.exist?('save_game.yaml') && return
   end
 
   def game_state
